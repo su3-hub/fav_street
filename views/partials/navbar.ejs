@@ -1,0 +1,15 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Fav Street</a>
+
+        <div id="navbar-nav" class="navbar-nav ml-auto">
+            <a class="nav-link" href="/snaps">Index</a>
+            <% if(!currentUser) { %>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link d-inlin-block" href="/register">Register</a>
+            <% } else { %>
+                <a class="nav-link" href="/logout">Logout</a>
+            <% } %>
+        </div>
+    </div>
+</nav>

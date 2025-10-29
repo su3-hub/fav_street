@@ -1,0 +1,91 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="text-center">Update Snap</h1>
+    <div class="col-6 offset-3">
+        <form action="/snaps/<%=snap._id%>?_method=PUT" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+            <!-- image url-->
+            <div class="mb-4">
+                <label class="form-label" for="url">Add Images</label>
+                <input
+                    class="form-control"
+                    id="url"
+                    type="file"
+                    name="images"
+                    multiple
+                >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a image URL.
+                </div>
+            </div>
+            <!-- title -->
+            <div class="mb-4">
+                <label class="form-label" for="title">Title</label>
+                <input
+                    class="form-control"
+                    id="title"
+                    type="text"
+                    placeholder="Title"
+                    name="snap[title]"
+                    value="<%= snap.title%>"
+                    required
+                >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a title.
+                </div>
+            </div>
+            <!-- Place -->
+            <div class="mb-4">
+                <label class="form-label" for="location">Place</label>
+                <input
+                    class="form-control"
+                    id="location"
+                    type="text"
+                    placeholder="Place"
+                    name="snap[location]"
+                    value="<%= snap.location%>"
+                    required
+                >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the shooting location.
+                </div>
+            </div>
+
+            <!-- description -->
+            <div class="mb-2">
+                <label class="form-label" for="description">Description</label>
+                <textarea
+                    class="form-control"
+                    id="description"
+                    name="snap[description]"
+                    value="<%= snap.description%>"
+                ></textarea>
+            </div>
+
+            <div class="mb-3 d-flex flex-wrap">
+                <% snap.images.forEach((image, i) => { %>
+                    <div class="mx-auto">
+                        <img class="img-thumbnail" src="<%=image.thumbnail%>" alt="<%=snap.description%>">
+                        <div class="from-check-inline">
+                            <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=image.filename%>">
+                            <label for="image-<%=i%>">Delete?</label>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            <button type="submit" class="w-50 btn btn-success mx-auto my-3 d-block">Update</button>
+        </form>
+        <a href="/snaps" class="w-50 btn btn-secondary mx-auto my-3 d-block">Cancel</a>
+
+    </div>
+</div>
+

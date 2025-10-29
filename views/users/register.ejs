@@ -1,0 +1,44 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="text-center">Register</h1>
+    <div class="col-6 offset-3">
+        <form action="/register" method="POST" class="needs-validation" novalidate>
+        <div class="mb-4">
+            <label class="form-label" for="username">User Name</label>
+            <input class="form-control" id="username" type="text" name="username" placeholder="User Name" value="<%=username%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                User name is required.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-control" id="email" type="email" name="email" placeholder="E-mail" value="<%=email%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter your E-mail address.
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" id="password" type="password" placeholder="Password" name="password" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Password is required.
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submmit">Registration</button>
+        </form>
+        <a href="/snaps">Cancel</a>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="text-center">New Snap</h1>
+    <div class="col-6 offset-3">
+        <form action="/snaps" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="form-label text-start" for="url">Select images</label>
+                <input class="form-control" 
+                    id="url" 
+                    type="file" 
+                    name="images"
+                    multiple
+                >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a image URL.
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" id="title" type="text" placeholder="Title" name="snap[title]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a title.
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label" for="location">Place</label>
+                <input class="form-control" id="location" type="text" placeholder="Place" name="snap[location]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the shooting location.
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" id="description" name="snap[description]"></textarea>
+            </div>
+            <button class="btn btn-primary d-block mt-3 mx-auto buttons" type="submmit">Create New Item</button>
+        </form>
+        <a href="/snaps" class="btn btn-secondary mt-3 d-block mx-auto buttons">Cancel</a>
+    </div>
+</div>

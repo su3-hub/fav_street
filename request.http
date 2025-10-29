@@ -1,0 +1,55 @@
+###
+GET http://localhost:3000/snaps
+
+
+###
+
+POST http://localhost:3000/snaps 
+Content-Type: application/json
+
+{
+    "snap": {
+        "title": "asd",
+        "location": "sdfa",
+        "description": "asf"
+    }
+}
+
+###
+
+PUT http://localhost:3000/snaps/68e751002d7871ea4c9effd6
+Content-Type: application/json
+
+{
+    "snap": {
+        "title": "今日だけの妖精さん",
+        "url": "sdf",
+        "location": "",
+        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora sit consectetur, accusamus repellendus aperiam dolor suscipit sed vel illo similique itaque, dignissimos incidunt quisquam beatae pariatur aliquam expedita. Repellat."
+    }
+}
+
+###
+
+POST http://localhost:3000/snaps/68e751002d7871ea4c9effd6/reviews
+Content-Type: application/json
+
+{
+    "review": {
+        "rating": 4,
+        "body": "asdf"
+    }
+}
+
+###
+PUT http://localhost:3000/snaps/68f655406b727a26522d9699
+Content-Type: application/json
+
+{
+    "snap": {
+        "title": "hack",
+        "url": "sdf",
+        "location": "",
+        "description":
+    }
+}

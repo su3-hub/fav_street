@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+<div class="map-container">
+    <div id="index-map" style="width: 100vw; height: 500px"></div>
+</div>
+<a href="/snaps/new" class="btn btn-info text-light">Create New Snap</a>
+<ul>
+    <% for (let snap of snaps) { %>
+        <div class="card my-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <%const rand = Math.floor(Math.random()* snap.images.length)%>
+                    <img class="img-fluid rounded" src="<%=snap.images[rand].url%>" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="cart-title"><%= snap.title%></h5>
+                        <% if (snap.description.length > 50) { %>
+                            <p class="card-text"><%= snap.description.substr(0, 100)%>...</p>
+                        <% } %>
+                        <p class="card-text"><small>Location: <%= snap.location%></small></p>
+                        <a href="/snaps/<%=snap._id%>" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</ul>
+
+<%-"<script>"%>
+const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+const snaps = {
+    type: "FeatureCollection",
+    features: <%- JSON.stringify(
+        snaps.map(snap => ({
+            type: "Feature",
+            geometry: snap.geometry,
+            properties: { popUpMarkup: snap?.properties?.popUpMarkup }
+        }))
+    ) %>
+};    
+<%-"</script>"%>
+
+<script src="/js/clusterMap.mjs"></script>
